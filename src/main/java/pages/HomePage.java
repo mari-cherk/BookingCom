@@ -36,8 +36,8 @@ public class HomePage extends BasePage {
 
     public void closeSignInPromt(){
         closePromtButton.click();
-        log.debug("The Sign In pop-up close");
-        Reporter.log("The Sign In pop-up close");
+        log.debug("The Sign In pop-up is close");
+        Reporter.log("The Sign In pop-up is close");
     }
 
     public void fillWhereField(String query){
@@ -48,8 +48,8 @@ public class HomePage extends BasePage {
 
     public void openCalendar(){
         checkInCalendar.click();
-        log.debug("The Calendar open");
-        Reporter.log("The Calendar open");
+        log.debug("The Calendar is open");
+        Reporter.log("The Calendar is open");
     }
 
     public void nextMonth(){

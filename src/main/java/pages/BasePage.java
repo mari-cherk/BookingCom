@@ -1,7 +1,6 @@
 package pages;
 
 import org.apache.log4j.Logger;
-import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.WebDriver;
 import org.testng.Reporter;
 
@@ -12,7 +11,6 @@ public class BasePage {
     public static final String siteUrl = "https://www.booking.com";
     public static WebDriver driver;
 
-
     public static void initConfiguration() {
         driver.get(siteUrl);
         log.debug("Navigated to " + siteUrl);
@@ -20,7 +18,6 @@ public class BasePage {
         driver.manage().window().maximize();
         log.debug("The window is maximized");
         Reporter.log("Navigated to " + siteUrl);
-
     }
 
     void waitFor(long mills) {
@@ -37,11 +34,11 @@ public class BasePage {
         Reporter.log("The browser is left");
     }
 
-    public void safeAlertDissmiss() {
-        try {
-            driver.switchTo().alert().dismiss();
-        } catch (NoAlertPresentException e) {
-
+    public void goToNewWindow(){
+        for(String winHandle : driver.getWindowHandles()){
+            driver.switchTo().window(winHandle);
         }
+        log.debug("Switching to the new window was executed");
+        Reporter.log("Switching to the new window was executed");
     }
 }

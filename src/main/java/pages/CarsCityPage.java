@@ -6,21 +6,19 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
 import org.testng.Reporter;
 
+public class CarsCityPage extends BasePage {
 
-public class HotelPage extends BasePage {
+    @FindBy(xpath = "//*[@class='sb-searchbox__title-text']")
+    public WebElement titleText;
 
-    @FindBy(xpath = "//p[@class='address address_clean']/span")
-    public WebElement hotelAddress;
-
-    public HotelPage() {
+    public CarsCityPage() {
         AjaxElementLocatorFactory factory = new AjaxElementLocatorFactory(driver, 5);
         PageFactory.initElements(factory, this);
     }
 
-    public String getHotelAddress(){
-        log.debug("The Hotel Address is extracted");
-        Reporter.log("The Hotel Address is extracted");
-        return hotelAddress.getText();
+    public String getTitleText(){
+        log.debug("The Title was extracted");
+        Reporter.log("The Title was extracted");
+        return titleText.getText().split(" ")[3];
     }
-
 }

@@ -29,4 +29,6 @@ public class SearchResultsPage extends BasePage {
             Reporter.log("No search result");
         }
     }
+
+
 }
