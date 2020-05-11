@@ -8,6 +8,7 @@ import java.io.File;
 
 public class DriverManager {
     public static WebDriver getDriver (String browser) {
+
         switch (browser) {
             case "farefox":
                 System.setProperty(

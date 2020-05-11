@@ -1,5 +1,6 @@
 package pages;
 
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -13,7 +14,8 @@ public class SearchResultsPage extends BasePage {
     @FindBy(xpath = "//div[contains(@class,'sr_item  sr_item_new sr_item_default sr_property_block  sr_flex_layout ')]//span[contains(@class,'sr-hotel__name')]")
     public List<WebElement> foundHotelsNames;
 
-    public SearchResultsPage() {
+    public SearchResultsPage(WebDriver driver) {
+        super(driver);
         AjaxElementLocatorFactory factory = new AjaxElementLocatorFactory(driver, 5);
         PageFactory.initElements(factory, this);
     }

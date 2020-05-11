@@ -2,21 +2,13 @@ package tests;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.CarsCityPage;
-import pages.CarsPage;
-import pages.HomePage;
-import pages.TopNavigation;
 
 public class BaseAutoRent extends BaseTest {
 
     @Test
     public void checkPopularDestinations(){
 
-        HomePage homePage = new HomePage();
-        CarsPage carsPage = new CarsPage();
-        TopNavigation topNav = new TopNavigation();
-        CarsCityPage carsCityPage = new CarsCityPage();
-        homePage.closeSignInPromt();
+        homePage.closeSignInPrompt();
         topNav.goToCarsTab();
         carsPage.goToFirstPopularCity();
         carsPage.goToNewWindow();

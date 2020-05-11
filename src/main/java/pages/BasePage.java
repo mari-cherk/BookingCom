@@ -9,15 +9,12 @@ import java.util.concurrent.TimeUnit;
 public class BasePage {
     public static Logger log = Logger.getLogger("devpinoyLogger");
     public static final String siteUrl = "https://www.booking.com";
-    public static WebDriver driver;
+    public WebDriver driver;
 
-    public static void initConfiguration() {
-        driver.get(siteUrl);
-        log.debug("Navigated to " + siteUrl);
-        Reporter.log("Navigated to " + siteUrl);
-        driver.manage().window().maximize();
-        log.debug("The window is maximized");
-        Reporter.log("Navigated to " + siteUrl);
+
+    public BasePage(WebDriver driver){
+        this.driver = driver;
+        log = Logger.getLogger(this.getClass().getCanonicalName());
     }
 
     void waitFor(long mills) {
@@ -26,12 +23,6 @@ public class BasePage {
         } catch (InterruptedException ex) {
             ex.printStackTrace();
         }
-    }
-
-    public static void quitBrowser() {
-        driver.quit();
-        log.debug("The browser is left");
-        Reporter.log("The browser is left");
     }
 
     public void goToNewWindow(){

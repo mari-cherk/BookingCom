@@ -1,6 +1,5 @@
 package pages;
 
-import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -13,17 +12,18 @@ public class TopNavigation extends BasePage {
     @FindBy(xpath = "//*[@id='cross-product-bar']/div/a[2]/span[2]")
     public WebElement carsTab;
 
-    public TopNavigation() {
+    public TopNavigation(WebDriver driver) {
+        super(driver);
         AjaxElementLocatorFactory factory = new AjaxElementLocatorFactory(driver, 5);
         PageFactory.initElements(factory, this);
     }
 
     public void goToCarsTab(){
-        try {
+        /*try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
-        }
+        }*/
         carsTab.click();
         log.debug("The Cars Tab is open");
         Reporter.log("The Cars Tab is open");
