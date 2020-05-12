@@ -31,11 +31,13 @@ public class HomePage extends BasePage {
     @FindBy(xpath = "//button[@class='sb-searchbox__button ']")
     public WebElement searchButton;
 
+
     public HomePage(WebDriver driver) {
         super(driver);
         AjaxElementLocatorFactory factory = new AjaxElementLocatorFactory(driver, 5);
         PageFactory.initElements(factory, this);
     }
+
 
     @Step("Closing Sign In Prompt on the Home Page")
     public void closeSignInPrompt(){

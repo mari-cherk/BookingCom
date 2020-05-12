@@ -3,10 +3,7 @@ package tests;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.testng.Reporter;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Optional;
-import org.testng.annotations.Parameters;
+import org.testng.annotations.*;
 import pages.*;
 import provider.DriverManager;
 
@@ -14,25 +11,26 @@ import java.util.concurrent.TimeUnit;
 
 
 public class BaseTest {
-
+/*
     protected HomePage homePage;
     protected SearchResultsPage searchPage;
     protected HotelPage hotelPage;
     protected CarsPage carsPage;
     protected TopNavigation topNav;
     protected CarsCityPage carsCityPage;
-
+*/
     public static Logger log = Logger.getLogger("devpinoyLogger");
 
     protected static ThreadLocal<WebDriver> driver = new ThreadLocal<>();
 
-    @BeforeTest
+    //@BeforeTest
+    @BeforeMethod
     @Parameters("browser")
     public void setUp(@Optional("Chrome") String browser) {
         driver.set(DriverManager.getDriver(browser));
         getDriver().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         initConfiguration();
-        initPages();
+       // initPages();
     }
 
     public WebDriver getDriver() {
@@ -49,7 +47,12 @@ public class BaseTest {
         Reporter.log("Navigated to " + BasePage.siteUrl);
     }
 
-    @AfterTest
+    public HomePage getHomePage(){
+        return new HomePage(getDriver());
+    }
+
+    //@AfterTest
+    @AfterMethod
     public void tearDown() {
         if (driver != null) {
             quitBrowser();
@@ -61,7 +64,7 @@ public class BaseTest {
         log.debug("The browser is left");
         Reporter.log("The browser is left");
     }
-
+/*
     public void initPages() {
         homePage = new HomePage(getDriver());
         searchPage = new SearchResultsPage(getDriver());
@@ -71,5 +74,5 @@ public class BaseTest {
         carsCityPage = new CarsCityPage(getDriver());
 
 
-    }
+    }*/
 }
