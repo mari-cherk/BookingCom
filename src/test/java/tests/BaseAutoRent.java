@@ -6,10 +6,6 @@ import io.qameta.allure.SeverityLevel;
 import io.qameta.allure.Story;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.CarsCityPage;
-import pages.CarsPage;
-import pages.HomePage;
-import pages.TopNavigation;
 
 public class BaseAutoRent extends BaseTest {
 
@@ -19,25 +15,19 @@ public class BaseAutoRent extends BaseTest {
     @Test
     public void checkPopularDestinations(){
 
-        HomePage homePage = new HomePage(getDriver());
-        TopNavigation topNav = new TopNavigation(getDriver());
-        CarsPage carsPage = new CarsPage(getDriver());
-        CarsCityPage carsCityPage = new CarsCityPage(getDriver());
-        homePage.closeSignInPrompt();
-        topNav.goToCarsTab();
-        carsPage.goToFirstPopularCity();
-        carsPage.goToNewWindow();
-        carsCityPage.getTitleText();
-        Assert.assertTrue(carsPage.getFirstPopularCity().contains(carsCityPage.getTitleText()), "The wrong city is displayed");
+        getHomePage().closeSignInPrompt();
+        getTopNavigation().goToCarsTab();
+        getCarsPage().goToFirstPopularCity();
+        getCarsPage().goToNewWindow();
+        getCarsCityPage().getTitleText();
+        Assert.assertTrue(getCarsPage().getFirstPopularCity().contains(getCarsCityPage().getTitleText()), "The wrong city is displayed");
     }
 
     @Test
     public void getCarsUrl(){
 
-        HomePage homePage = new HomePage(getDriver());
-        TopNavigation topNav = new TopNavigation(getDriver());
-        homePage.closeSignInPrompt();
-        topNav.goToCarsTab();
+        getHomePage().closeSignInPrompt();
+        getTopNavigation().goToCarsTab();
         System.out.println(getDriver().getCurrentUrl());
     }
 }

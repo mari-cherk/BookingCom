@@ -11,17 +11,22 @@ import java.util.concurrent.TimeUnit;
 
 
 public class BaseTest {
-/*
-    protected HomePage homePage;
-    protected SearchResultsPage searchPage;
-    protected HotelPage hotelPage;
-    protected CarsPage carsPage;
-    protected TopNavigation topNav;
-    protected CarsCityPage carsCityPage;
-*/
+
     public static Logger log = Logger.getLogger("devpinoyLogger");
 
     protected static ThreadLocal<WebDriver> driver = new ThreadLocal<>();
+
+    protected static ThreadLocal<HomePage> homePage = new ThreadLocal<>();
+
+    protected static ThreadLocal<SearchResultsPage> searchPage = new ThreadLocal<>();
+
+    protected static ThreadLocal<HotelPage> hotelPage = new ThreadLocal<>();
+
+    protected static ThreadLocal<CarsPage> carsPage = new ThreadLocal<>();
+
+    protected static ThreadLocal<TopNavigation> topNav = new ThreadLocal<>();
+
+    protected static ThreadLocal<CarsCityPage> carsCityPage = new ThreadLocal<>();
 
     //@BeforeTest
     @BeforeMethod
@@ -30,7 +35,7 @@ public class BaseTest {
         driver.set(DriverManager.getDriver(browser));
         getDriver().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         initConfiguration();
-       // initPages();
+        initPages();
     }
 
     public WebDriver getDriver() {
@@ -48,7 +53,27 @@ public class BaseTest {
     }
 
     public HomePage getHomePage(){
-        return new HomePage(getDriver());
+        return homePage.get();
+    }
+
+    public SearchResultsPage getSearchPage(){
+        return searchPage.get();
+    }
+
+    public HotelPage getHotelPage(){
+        return hotelPage.get();
+    }
+
+    public CarsPage getCarsPage(){
+        return carsPage.get();
+    }
+
+    public TopNavigation getTopNavigation(){
+        return topNav.get();
+    }
+
+    public CarsCityPage getCarsCityPage(){
+        return carsCityPage.get();
     }
 
     //@AfterTest
@@ -64,15 +89,14 @@ public class BaseTest {
         log.debug("The browser is left");
         Reporter.log("The browser is left");
     }
-/*
+
     public void initPages() {
-        homePage = new HomePage(getDriver());
-        searchPage = new SearchResultsPage(getDriver());
-        hotelPage = new HotelPage(getDriver());
-        carsPage = new CarsPage(getDriver());
-        topNav = new TopNavigation(getDriver());
-        carsCityPage = new CarsCityPage(getDriver());
 
-
-    }*/
+        homePage.set(new HomePage(getDriver()));
+        searchPage.set(new SearchResultsPage(getDriver()));
+        hotelPage.set(new HotelPage(getDriver()));
+        carsPage.set(new CarsPage(getDriver()));
+        topNav.set(new TopNavigation(getDriver()));
+        carsCityPage.set(new CarsCityPage(getDriver()));
+    }
 }
