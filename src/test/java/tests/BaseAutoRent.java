@@ -20,7 +20,6 @@ public class BaseAutoRent extends BaseTest {
         carsPage.goToFirstPopularCity();
         carsPage.goToNewWindow();
         carsCityPage.getTitleText();
-        //Assert.assertTrue(carsPage.getFirstPopularCity().contains(carsCityPage.getTitleText()), "The wrong city is displayed");
-        Assert.assertTrue(carsPage.getFirstPopularCity().contains("100"), "The wrong city is displayed");
+        Assert.assertTrue(carsPage.getFirstPopularCity().contains(carsCityPage.getTitleText()), "The wrong city is displayed");
     }
 }
