@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -20,6 +21,7 @@ public class SearchResultsPage extends BasePage {
         PageFactory.initElements(factory, this);
     }
 
+    @Step("Choosing the First found hotel on the Search Results page")
     public void chooseFirstFoundHotel(){
         if(foundHotelsNames.size() > 0) {
             foundHotelsNames.get(0).click();

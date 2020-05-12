@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -18,12 +19,14 @@ public class CarsPage extends BasePage {
         PageFactory.initElements(factory, this);
     }
 
+    @Step("Getting the First Popular City on the Cars page ")
     public String getFirstPopularCity(){
         log.debug("The First Popular City was extracted");
         Reporter.log("The First Popular City was extracted");
         return firstPopularCity.getText();
     }
 
+    @Step("Clicking the First Popular City on the Cars page ")
     public void goToFirstPopularCity(){
         firstPopularCity.click();
         log.debug("The First Popular City is open");

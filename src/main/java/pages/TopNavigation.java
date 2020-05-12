@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -18,12 +19,8 @@ public class TopNavigation extends BasePage {
         PageFactory.initElements(factory, this);
     }
 
+    @Step("Clicking the Cars Tab on the Site Header")
     public void goToCarsTab(){
-        /*try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }*/
         carsTab.click();
         log.debug("The Cars Tab is open");
         Reporter.log("The Cars Tab is open");

@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -19,6 +20,7 @@ public class HotelPage extends BasePage {
         PageFactory.initElements(factory, this);
     }
 
+    @Step("Getting the Hotel Address on the Hotel page")
     public String getHotelAddress(){
         log.debug("The Hotel Address is extracted");
         Reporter.log("The Hotel Address is extracted");

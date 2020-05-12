@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -18,6 +19,7 @@ public class CarsCityPage extends BasePage {
         PageFactory.initElements(factory, this);
     }
 
+    @Step("Getting the name of the chosen City on the Cars City page")
     public String getTitleText(){
         log.debug("The Title was extracted");
         Reporter.log("The Title was extracted");
