@@ -15,7 +15,6 @@ public class BaseHotelFind extends BaseTest {
     @Test
     public void hotelFind(){
 
-        getHomePage().closeSignInPrompt();
         getHomePage().fillWhereField("Киев, Украина");
         getHomePage().chooseTimePeriod();
         getHomePage().submitSearch();

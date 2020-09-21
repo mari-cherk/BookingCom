@@ -15,7 +15,6 @@ public class BaseAutoRent extends BaseTest {
     @Test
     public void checkPopularDestinations(){
 
-        getHomePage().closeSignInPrompt();
         getTopNavigation().goToCarsTab();
         getCarsPage().goToFirstPopularCity();
         getCarsPage().goToNewWindow();
@@ -26,7 +25,6 @@ public class BaseAutoRent extends BaseTest {
     @Test
     public void getCarsUrl(){
 
-        getHomePage().closeSignInPrompt();
         getTopNavigation().goToCarsTab();
         System.out.println(getDriver().getCurrentUrl());
     }
